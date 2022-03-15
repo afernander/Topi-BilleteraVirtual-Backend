@@ -17,10 +17,12 @@ import { ParentsController } from './parents/parents.controller';
 import { ParentsModule } from './parents/parents.module';
 import { PaysController } from './pays/pays.controller';
 import { PaysModule } from './pays/pays.module';
+import { AuthController } from './auth/auth.controller';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [UsersModule, StudentsModule, PromosModule, ProductsModule, TransactionModule, AdminModule, ParentsModule, PaysModule],
-  controllers: [AppController, UsersController, StudentsController, PromosController, ProductsController, TransactionController, AdminController, ParentsController, PaysController],
+  imports: [UsersModule, StudentsModule, PromosModule, ProductsModule, TransactionModule, AdminModule, ParentsModule, PaysModule, AuthModule],
+  controllers: [AppController, UsersController, StudentsController, PromosController, ProductsController, TransactionController, AdminController, ParentsController, PaysController, AuthController],
   providers: [AppService],
 })
 export class AppModule {}
