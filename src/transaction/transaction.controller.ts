@@ -1,4 +1,24 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, Post} from '@nestjs/common';
 
 @Controller('transaction')
-export class TransactionController {}
+export class TransactionController {
+
+    @Get() 
+    newTransaction(){
+
+    }
+
+    @Post()
+    autorize(){
+
+    }
+
+    @Post()
+    securityCode(){
+        
+    }
+
+    createPaid(){
+        
+    }
+}
