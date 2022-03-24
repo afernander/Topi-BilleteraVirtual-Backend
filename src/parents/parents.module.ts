@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ParentsService } from './parents.service';
-import { AuthModule } from 'src/auth/auth.module';
+
 
 @Module({
-  imports: [AuthModule],
+  imports: [],
   providers: [ParentsService],
   exports:[ParentsService]
 })

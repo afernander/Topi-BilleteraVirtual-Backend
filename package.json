@@ -1,7 +1,7 @@
 {
   "name": "topi-backend",
   "version": "0.0.1",
-  "description": "",
+  "description": "<p align=\"center\">   <a href=\"http://nestjs.com/\" target=\"blank\"><img src=\"https://nestjs.com/img/logo_text.svg\" width=\"320\" alt=\"Nest Logo\" /></a> </p>",
   "author": "",
   "private": true,
   "license": "UNLICENSED",
@@ -24,10 +24,18 @@
     "@nestjs/common": "^8.4.1",
     "@nestjs/core": "^8.4.1",
     "@nestjs/platform-express": "^8.4.1",
+    "@nestjs/typeorm": "^8.0.3",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.13.2",
     "g": "^2.0.1",
+    "mssql": "^6.4.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.2.0",
+    "sqlite3": "^5.0.2",
+    "typeorm": "^0.3.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.2.3",
@@ -68,5 +76,17 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
-  }
+  },
+  "main": ".eslintrc.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afernander/Topi-BilleteraVirtual-Backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/afernander/Topi-BilleteraVirtual-Backend/issues"
+  },
+  "homepage": "https://github.com/afernander/Topi-BilleteraVirtual-Backend#readme"
 }

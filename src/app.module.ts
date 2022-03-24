@@ -3,8 +3,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersController } from './users/users.controller';
 import { UsersModule } from './users/users.module';
-import { StudentsController } from './students/students.controller';
-import { StudentsModule } from './students/students.module';
 import { PromosController } from './promos/promos.controller';
 import { PromosModule } from './promos/promos.module';
 import { ProductsController } from './products/products.controller';
@@ -19,10 +17,20 @@ import { PaysController } from './pays/pays.controller';
 import { PaysModule } from './pays/pays.module';
 import { AuthController } from './auth/auth.controller';
 import { AuthModule } from './auth/auth.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Users } from './users/users.entity';
+import { UsersService } from './users/users.service';
 
 @Module({
-  imports: [UsersModule, StudentsModule, PromosModule, ProductsModule, TransactionModule, AdminModule, ParentsModule, PaysModule, AuthModule],
-  controllers: [AppController, UsersController, StudentsController, PromosController, ProductsController, TransactionController, AdminController, ParentsController, PaysController, AuthController],
+  imports: [UsersModule, PromosModule, ProductsModule, TransactionModule, AdminModule, ParentsModule, PaysModule, AuthModule, 
+    TypeOrmModule.forRoot({
+    type: 'sqlite',
+    database: 'tu.sqlite',
+    entities: [Users],
+    synchronize: true,
+  }),
+],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
