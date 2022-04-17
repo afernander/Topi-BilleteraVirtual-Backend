@@ -1,10 +1,16 @@
-import { AfterInsert, AfterRemove, AfterUpdate, Entity, Column, PrimaryGeneratedColumn, IsNull } from 'typeorm';
+import { AfterInsert, AfterRemove, AfterUpdate, Entity, Column, PrimaryGeneratedColumn, IsNull, OneToOne, JoinColumn, ManyToOne,OneToMany } from 'typeorm';
+import { UsersController } from './users.controller';
+import { Parents } from 'src/parents/parents.entity';
+import { Subsidies } from 'src/subsidies/subsidies.entity';
+import { Transfers } from 'src/transfers/transfers.entity';
+import { Expenses } from 'src/expenses/expenses.entity';
+import { Bill } from 'src/bill/bill.entity';
 
 @Entity()
 export class Users{
 
     @PrimaryGeneratedColumn()
-    id_User: number;
+    id: number;
 
     @Column()
     email: string;
@@ -14,30 +20,42 @@ export class Users{
 
     @Column()
     name: string;
-
     
-    @Column({nullable: true})
-    dinamic_Password: number;
-    
-    @Column({nullable: true})
+    @Column({nullable: true, default: 0})
     balance: number;
 
     @Column()
-    date: Date;
+    born_date: Date;
+
+    @OneToOne(() => Parents, (parents) => parents.users) 
+    parents: Parents;
+
+    @OneToMany(() => Subsidies, (subsidies) => subsidies.users)
+    subsidies: Subsidies[];
+
+    @OneToMany(() => Transfers, (transfers) => transfers.users)
+    transfers: Transfers[];
+
+    @OneToMany(() => Expenses, (expenses) => expenses.users)
+    expenses: Expenses[];
+
+    @OneToMany(() => Bill, (bill) => bill.users)
+    bill: Bill[];
+
 
 
     @AfterInsert()
     logInsert() {
-        console.log('Inserted User with id', this.id_User);
+        console.log('Inserted User with id', this.id);
     }
 
     @AfterUpdate()
     logUpdate(){
-        console.log('Updated User with id', this.id_User);
+        console.log('Updated User with id', this.id);
     }
 
     @AfterRemove()
     logRemove(){
-        console.log('Removed User with id', this.id_User);
+        console.log('Removed User with id', this.id);
     }
 }

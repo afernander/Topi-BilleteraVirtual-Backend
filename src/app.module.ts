@@ -1,35 +1,33 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsersController } from './users/users.controller';
 import { UsersModule } from './users/users.module';
-import { PromosController } from './promos/promos.controller';
-import { PromosModule } from './promos/promos.module';
-import { ProductsController } from './products/products.controller';
-import { ProductsModule } from './products/products.module';
-import { TransactionController } from './transaction/transaction.controller';
-import { TransactionModule } from './transaction/transaction.module';
-import { AdminController } from './admin/admin.controller';
-import { AdminModule } from './admin/admin.module';
-import { ParentsController } from './parents/parents.controller';
-import { ParentsModule } from './parents/parents.module';
-import { PaysController } from './pays/pays.controller';
-import { PaysModule } from './pays/pays.module';
-import { AuthController } from './auth/auth.controller';
 import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { BillModule } from './bill/bill.module';
+import { ProductsModule } from './products/products.module';
+import { ExpensesModule } from './expenses/expenses.module';
+import { TransfersModule } from './transfers/transfers.module';
+import { ParentsModule } from './parents/parents.module';
+import { SubsidiesModule } from './subsidies/subsidies.module';
 import { Users } from './users/users.entity';
-import { UsersService } from './users/users.service';
+import { Parents } from './parents/parents.entity';
+import { Subsidies } from './subsidies/subsidies.entity';
+import { Transfers } from './transfers/transfers.entity';
+import { Expenses } from './expenses/expenses.entity';
+import { Bill } from './bill/bill.entity';
+import { Products } from './products/products.entity';
+
 
 @Module({
-  imports: [UsersModule, PromosModule, ProductsModule, TransactionModule, AdminModule, ParentsModule, PaysModule, AuthModule, 
+  imports: [UsersModule, ProductsModule, TransfersModule, ParentsModule, AuthModule,BillModule, ExpensesModule, TransfersModule, SubsidiesModule, 
     TypeOrmModule.forRoot({
     type: 'sqlite',
     database: 'tu.sqlite',
-    entities: [Users],
+    entities: [Users, Parents, Subsidies, Transfers, Expenses, Bill, Products],
     synchronize: true,
-  }),
-],
+  }), 
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

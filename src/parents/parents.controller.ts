@@ -1,27 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller } from '@nestjs/common';
 
 @Controller('parents')
-export class ParentsController {
-
-    @Get()
-    studentInfo(){
-
-    }
-
-    @Get()
-    exepenses(){
-
-    }
-
-    @Get()
-    freezeAccount(){
-
-    }
-
-    @Get()
-    transaction(){
-
-    }
-
-
-}
+export class ParentsController {}
