@@ -5,7 +5,7 @@ import { Users } from 'src/users/users.entity';
 export class Expenses{
 
     @PrimaryGeneratedColumn()
-    id_expense: number;
+    id: number;
 
     @Column()
     amount: number;
@@ -18,16 +18,16 @@ export class Expenses{
 
     @AfterInsert()
     logInsert() {
-        console.log('Inserted User with id', this.id_expense);
+        console.log('Inserted User with id', this.id);
     }
 
     @AfterUpdate()
     logUpdate(){
-        console.log('Updated User with id', this.id_expense);
+        console.log('Updated User with id', this.id);
     }
 
     @AfterRemove()
     logRemove(){
-        console.log('Removed User with id', this.id_expense);
+        console.log('Removed User with id', this.id);
     }
 }

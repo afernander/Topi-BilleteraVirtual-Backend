@@ -15,14 +15,14 @@ export class UsersService{
         return this.repo.save(user);
     }
 
-    findOne(id_User: any){
-        return this.repo.findOne(id_User);
+    findOne(id: number) {
+        return this.repo.findOne({where: {id: id}});
     }
 
     find(email: string){
-       // return this.repo.find({email});
+        return this.repo.find({where: {email: email}});
     }
-    /*
+    
     async update(id: number, attrs: Partial<Users>){
         const user = await this.findOne(id);
         if (!user){
@@ -39,5 +39,5 @@ export class UsersService{
         }
         return this.repo.remove(user);
     }
-    */
+    
 }

@@ -1,8 +1,10 @@
-import { Param,NotFoundException,Controller, Get, Delete, Patch, Post, Body } from '@nestjs/common';
+import { Param,NotFoundException,Controller, Get, Delete, Patch, Post, Body, Query } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UsersService } from './users.service';
 import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { UserDto } from './dtos/user.dto';
+import { UpdateUserDto } from './dtos/update-user.dto'
+
 
 @Controller('users')
 @Serialize(UserDto)
@@ -26,18 +28,18 @@ export class UsersController {
     }
 
     @Get()
-    findAllUsers(){
-       
+    findAllUsers(@Query('email') email: string){
+       return this.usersService.find(email);
     }
 
-    @Patch()
-    updateUser(){
-        
+    @Patch('/:id')
+    updateUser(@Param('id') id: string, @Body() body: UpdateUserDto){
+        return this.usersService.update(parseInt(id), body); 
     }
 
     @Delete('/:id')
-    removeUser(){
-       
+    removeUser(@Param('id') id: string){
+        return this.usersService.remove(parseInt(id));
     }
 
 

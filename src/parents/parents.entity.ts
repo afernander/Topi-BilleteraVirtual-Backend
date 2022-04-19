@@ -10,9 +10,6 @@ export class Parents{
     @Column()
     password: string;
 
-    @Column()
-    id_user:number;
-
     @OneToOne(() => Users, (users) => users.parents) // specify inverse side as a second parameter
     @JoinColumn()
     users: Users
