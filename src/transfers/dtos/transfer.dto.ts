@@ -1,8 +1,8 @@
 import { Expose } from "class-transformer";
 
 
-export class TranDto{
-    
+export class TransferDto{
+
     @Expose()
     id: number;
 
