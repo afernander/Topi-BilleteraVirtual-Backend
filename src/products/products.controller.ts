@@ -13,9 +13,8 @@ import {
 } from '@nestjs/common';
 import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { ProductDto } from './dtos/product.dto';
-import { UpdateProductDto } from './dtos/create-product.dto';
 import { ProductsService } from './products.service';
-import { CreateProductDto } from './dtos/create-product.dto';
+import { CreateProductDto, UpdateProductDto } from './dtos/create-product.dto';
 
 @Controller('products')
 @Serialize(ProductDto)
