@@ -18,15 +18,31 @@ import { Expenses } from './expenses/expenses.entity';
 import { Bill } from './bill/bill.entity';
 import { Products } from './products/products.entity';
 
-
 @Module({
-  imports: [UsersModule, ProductsModule, TransfersModule, ParentsModule, AuthModule,BillModule, ExpensesModule, TransfersModule, SubsidiesModule, 
+  imports: [
+    UsersModule,
+    ProductsModule,
+    TransfersModule,
+    ParentsModule,
+    AuthModule,
+    BillModule,
+    ExpensesModule,
+    TransfersModule,
+    SubsidiesModule,
     TypeOrmModule.forRoot({
-    type: 'sqlite',
-    database: 'tu.sqlite',
-    entities: [Users, Parents, Subsidies, Transfers, Expenses, Bill, Products],
-    synchronize: true,
-  }), 
+      type: 'sqlite',
+      database: 'tu.sqlite',
+      entities: [
+        Users,
+        Parents,
+        Subsidies,
+        Transfers,
+        Expenses,
+        Bill,
+        Products,
+      ],
+      synchronize: true,
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
