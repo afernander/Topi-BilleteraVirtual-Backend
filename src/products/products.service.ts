@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Products } from './products.entity';
-import { CreateProductDto } from './dtos/create-product.dto';
+import { CreateProductDto, UpdateProductDto } from './dtos/create-product.dto';
 
 @Injectable()
 export class ProductsService {
@@ -22,7 +22,7 @@ export class ProductsService {
     return this.repo.find();
   }
 
-  async update(id: number, attrs: Partial<Products>) {
+  async update(id: number, attrs: UpdateProductDto) {
     const product = await this.findOne(id);
     if (!product) {
       throw new NotFoundException('product not found');

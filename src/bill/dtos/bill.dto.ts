@@ -1,8 +1,8 @@
 import { Expose } from "class-transformer";
 
 
-export class SubDto{
-    
+export class BillDto{
+
     @Expose()
     id: number;
 
