@@ -1,6 +1,6 @@
 import { Expose } from "class-transformer";
 
-export class SubDto{
+export class ExpDto{
     
     @Expose()
     id: number;

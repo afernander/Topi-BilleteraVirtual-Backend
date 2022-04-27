@@ -1,6 +1,6 @@
 import { IsString, IsDate, IsNumber } from "class-validator";
 import { UserDto } from "src/users/dtos/user.dto";
-
+import { PartialType } from '@nestjs/swagger';
 
 export class CreateExpDto{
     
@@ -12,3 +12,5 @@ export class CreateExpDto{
 
     users: UserDto;
 }
+
+export class UpdateExpDto extends PartialType(CreateExpDto) {}
