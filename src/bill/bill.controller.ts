@@ -10,14 +10,17 @@ import {
   Body,
   Query,
   ParseIntPipe,
+  UseGuards,
 } from '@nestjs/common';
 import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { BillDto } from './dtos/bill.dto';
 import { BillService } from './bill.service';
 import { CreateBillDto, UpdateBillDto } from './dtos/create-bill.dto';
+import { AuthGuard } from 'src/guards/auth.guard';
 
 @Controller('bill')
 @Serialize(BillDto)
+@UseGuards(AuthGuard)
 export class BillController {
   constructor(private billService: BillService) {}
 

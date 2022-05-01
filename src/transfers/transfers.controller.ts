@@ -10,6 +10,7 @@ import {
   Body,
   Query,
   ParseIntPipe,
+  UseGuards
 } from '@nestjs/common';
 import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { TransferDto } from './dtos/transfer.dto';
@@ -18,9 +19,11 @@ import {
   CreateTransferDto,
   UpdateTransferDto,
 } from './dtos/create-transfer.dto';
+import { AuthGuard } from 'src/guards/auth.guard';
 
 @Controller('transfers')
 @Serialize(TransferDto)
+@UseGuards(AuthGuard)
 export class TransfersController {
   constructor(private transfersService: TransfersService) {}
 
