@@ -1,3 +1,6 @@
+[Definicion Producto TU.pdf](https://github.com/afernander/Topi-BilleteraVirtual-Backend/files/8599901/Definicion.Producto.TU.pdf)
+
+
 ![image](https://user-images.githubusercontent.com/45807912/166165823-0134b5bf-c296-4fc2-a3a3-f1b0939f894c.png)
 
 
