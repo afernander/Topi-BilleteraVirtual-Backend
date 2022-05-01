@@ -10,12 +10,15 @@ import {
     Body,
     Query,
     ParseIntPipe,
+    UseGuards,
   } from '@nestjs/common';
-  import { Serialize } from 'src/interceptors/serialize.interceptor';
-  import { ExpDto } from './dtos/exp.dto';
-  import { ExpensesService } from './expenses.service';
-  import { CreateExpDto, UpdateExpDto } from './dtos/create-Exp.dto';
+import { Serialize } from 'src/interceptors/serialize.interceptor';
+import { ExpDto } from './dtos/exp.dto';
+import { ExpensesService } from './expenses.service';
+import { CreateExpDto, UpdateExpDto } from './dtos/create-Exp.dto';
+import { AuthGuard } from 'src/guards/auth.guard';
 
+@UseGuards(AuthGuard)
 @Controller('expenses')
 @Serialize(ExpDto)
 export class ExpensesController {
