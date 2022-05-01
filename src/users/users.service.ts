@@ -8,11 +8,12 @@ import { CreateUserDto, UpdateUserDto } from './dtos/create-user.dto';
 export class UsersService {
   constructor(@InjectRepository(Users) private repo: Repository<Users>) {}
 
-  create(data: CreateUserDto) {
-    const user = this.repo.create(data);
+  create(email: string, password: string, name:string, born_date: Date){
+    const user = this.repo.create({email, password,name , born_date});
 
     return this.repo.save(user);
-  }
+}
+
 
   findOne(id: number) {
     return this.repo.findOne({ where: { id: id } });
@@ -21,6 +22,11 @@ export class UsersService {
   findAll() {
     return this.repo.find();
   }
+
+  find(email: string){
+    return this.repo.find({email});
+}
+
 
   async update(id: number, attrs: UpdateUserDto) {
     const user = await this.findOne(id);
