@@ -20,6 +20,7 @@ import { UserDto } from './dtos/user.dto';
 import { UpdateUserDto } from './dtos/create-user.dto';
 import { AuthService } from 'src/users/auth.service';
 import { CurrentUser } from './decorators/current-user.decorator';
+import { Users } from './users.entity';
 
 @Controller('users')
 @Serialize(UserDto)
@@ -28,13 +29,8 @@ export class UsersController {
     private authService: AuthService
     ) {}
 
-  // @Get('/whoiam')
-  // whoAmI(@Session() session: any){
-  //   return this.usersService.findOne(session.userId);
-  // }
-
   @Get('/whoiam')
-  whoAmI(@CurrentUser() user: string){
+  whoAmI(@CurrentUser() user: Users){
     return user;
   }
 
