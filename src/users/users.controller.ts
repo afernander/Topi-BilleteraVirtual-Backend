@@ -34,6 +34,7 @@ export class UsersController {
   @UseGuards(AuthGuard)
   @Get('/whoiam')
   whoAmI(@CurrentUser() user: Users){
+    console.log('Consulted User with id', user.id);
     return user;
   }
 
@@ -54,6 +55,7 @@ export class UsersController {
   async singin(@Body() body: SinginDto, @Session() session: any){
      const user= await this.authService.signin(body.email, body.password);
      session.userId = user.id;
+     console.log('User with id', user.id);
      return user;
   }
 
