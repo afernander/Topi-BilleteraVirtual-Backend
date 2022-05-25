@@ -27,36 +27,40 @@ import { AuthGuard } from 'src/guards/auth.guard';
 @Controller('users')
 @Serialize(UserDto)
 export class UsersController {
-  constructor(private usersService: UsersService,
-    private authService: AuthService
-    ) {}
+  constructor(
+    private usersService: UsersService,
+    private authService: AuthService,
+  ) {}
 
-  @UseGuards(AuthGuard)
   @Get('/whoiam')
-  whoAmI(@CurrentUser() user: Users){
+  whoAmI(@CurrentUser() user: Users) {
     console.log('Consulted User with id', user.id);
     return user;
   }
 
-
   @Post('/signout')
-  singOut(@Session() session: any){
-    session.userId = null;
+  singOut() {
+    console.log('Cerro sesion');
   }
 
   @Post('/signup')
-  async createNewUser(@Body() body: CreateUserDto, @Session() session: any){
-      const user = await this.authService.singup(body.email, body.password,body.name, body.date);
-      session.userId = user.id;
-      return user;
+  async createNewUser(@Body() body: CreateUserDto) {
+    const user = await this.authService.singup(
+      body.email,
+      body.password,
+      body.name,
+      body.date,
+    );
+
+    return user;
   }
 
   @Post('/signin')
-  async singin(@Body() body: SinginDto, @Session() session: any){
-     const user= await this.authService.signin(body.email, body.password);
-     session.userId = user.id;
-     console.log('User with id', user.id);
-     return user;
+  async singin(@Body() body: SinginDto) {
+    const user = await this.authService.signin(body.email, body.password);
+
+    console.log('User with id', user.id);
+    return user;
   }
 
   @Get('/:id')
@@ -70,9 +74,9 @@ export class UsersController {
   }
 
   @Get()
-    findAllUsersEmail(@Query('email') email: string ){
-        return this.usersService.find(email);
-    }
+  findAllUsersEmail(@Query('email') email: string) {
+    return this.usersService.find(email);
+  }
 
   @Get('/all')
   findAllUsers() {

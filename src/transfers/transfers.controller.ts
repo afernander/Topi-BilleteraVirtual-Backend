@@ -23,7 +23,7 @@ import { AuthGuard } from 'src/guards/auth.guard';
 
 @Controller('transfers')
 @Serialize(TransferDto)
-@UseGuards(AuthGuard)
+
 export class TransfersController {
   constructor(private transfersService: TransfersService) {}
 

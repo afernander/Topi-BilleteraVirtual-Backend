@@ -20,7 +20,7 @@ import { AuthGuard } from 'src/guards/auth.guard';
 
 @Controller('bill')
 @Serialize(BillDto)
-@UseGuards(AuthGuard)
+
 export class BillController {
   constructor(private billService: BillService) {}
 

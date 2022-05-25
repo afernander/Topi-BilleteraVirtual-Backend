@@ -18,7 +18,7 @@ import { ExpensesService } from './expenses.service';
 import { CreateExpDto, UpdateExpDto } from './dtos/create-Exp.dto';
 import { AuthGuard } from 'src/guards/auth.guard';
 
-@UseGuards(AuthGuard)
+
 @Controller('expenses')
 @Serialize(ExpDto)
 export class ExpensesController {
@@ -29,7 +29,7 @@ export class ExpensesController {
     createNewbill(@Body() body: CreateExpDto) {
       this.expensesService.create(body);
     }
-  
+
     @Get('/:id')
     async findbill(@Param('id', ParseIntPipe) id: number) {
       //console.log('handler is running');
@@ -39,12 +39,12 @@ export class ExpensesController {
       }
       return exp;
     }
-  
+
     @Get()
     findAllbills() {
       return this.expensesService.findAll();
     }
-  
+
     @Put('/:id')
     updatebill(
       @Param('id', ParseIntPipe) id: number,
@@ -52,7 +52,7 @@ export class ExpensesController {
     ) {
       return this.expensesService.update(id, body);
     }
-  
+
     @Delete('/:id')
     removebill(@Param('id', ParseIntPipe) id: number) {
       return this.expensesService.remove(id);
