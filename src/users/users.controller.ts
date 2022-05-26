@@ -50,6 +50,7 @@ export class UsersController {
       body.password,
       body.name,
       body.date,
+      body.balance
     );
 
     return user;

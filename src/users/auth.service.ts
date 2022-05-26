@@ -9,7 +9,7 @@ const scrypt = promisify(_scrypt);
 export class AuthService {
     constructor(private usersService: UsersService){}
 
-    async singup(email: string, password: string, name:string, born_date: Date){
+    async singup(email: string, password: string, name:string, born_date: Date, balance: number){
         // See if email is in used
         const users = await this.usersService.find(email);
 
@@ -28,7 +28,7 @@ export class AuthService {
         const result = salt +'.'+ hash.toString('hex');
 
         // create a new user and save it
-        const user = await this.usersService.create(email, result, name, born_date);
+        const user = await this.usersService.create(email, password, name, born_date, balance);
 
         //return the user
         return user;
@@ -37,17 +37,17 @@ export class AuthService {
     async signin(email: string, password: string){
         const [user] = await this.usersService.find(email);
 
-        if (!user){
-            throw new NotFoundException('User not foud');
-        }
+        // if (!user){
+        //     throw new NotFoundException('User not foud');
+        // }
 
-        const [salt, stroredhash] = user.password.split('.');
+        // const [salt, stroredhash] = user.password.split('.');
 
-        const hash = (await scrypt(password, salt, 32)) as Buffer;
+        // const hash = (await scrypt(password, salt, 32)) as Buffer;
 
-        if (stroredhash !== hash.toString('hex')){
-            throw new BadRequestException('bad PASSWORD')
-        }
+        // if (stroredhash !== hash.toString('hex')){
+        //     throw new BadRequestException('bad PASSWORD')
+        // }
 
         return user;
             

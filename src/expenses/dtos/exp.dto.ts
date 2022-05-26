@@ -9,5 +9,5 @@ export class ExpDto{
     amount: number;
 
     @Expose()
-    categoty: string;
+    category: string;
 }

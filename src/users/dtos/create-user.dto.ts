@@ -1,4 +1,4 @@
-import { IsEmail, IsString, IsDate, IsDateString } from 'class-validator';
+import { IsEmail, IsString, IsDate, IsDateString, IsNumber } from 'class-validator';
 import { PartialType } from '@nestjs/swagger';
 
 export class CreateUserDto {
@@ -13,6 +13,9 @@ export class CreateUserDto {
 
   @IsDateString()
   readonly date: Date;
+
+  @IsNumber()
+  readonly balance: number;
 }
 
 export class UpdateUserDto extends PartialType(CreateUserDto) {}
