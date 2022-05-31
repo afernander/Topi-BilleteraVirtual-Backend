@@ -36,7 +36,7 @@ export class Users {
   balance: number;
 
   @Column()
-  born_date: Date;
+  date: Date;
 
   @OneToOne(() => Parents, (parents) => parents.users)
   parents: Parents;

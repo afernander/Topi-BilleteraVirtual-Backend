@@ -9,7 +9,7 @@ const scrypt = promisify(_scrypt);
 export class AuthService {
     constructor(private usersService: UsersService){}
 
-    async singup(email: string, password: string, name:string, born_date: Date, balance: number){
+    async singup(email: string, password: string, name:string, date: Date, balance: number){
         // See if email is in used
         const users = await this.usersService.find(email);
 
@@ -28,7 +28,7 @@ export class AuthService {
         const result = salt +'.'+ hash.toString('hex');
 
         // create a new user and save it
-        const user = await this.usersService.create(email, password, name, born_date, balance);
+        const user = await this.usersService.create(email, password, name, date, balance);
 
         //return the user
         return user;
@@ -50,7 +50,7 @@ export class AuthService {
         // }
 
         return user;
-            
+
     }
 
 }

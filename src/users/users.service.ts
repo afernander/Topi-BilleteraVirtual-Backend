@@ -8,8 +8,8 @@ import { CreateUserDto, UpdateUserDto } from './dtos/create-user.dto';
 export class UsersService {
   constructor(@InjectRepository(Users) private repo: Repository<Users>) {}
 
-  create(email: string, password: string, name:string, born_date: Date, balance: number){
-    const user = this.repo.create({email, password,name , born_date, balance});
+  create(email: string, password: string, name:string, date: Date, balance: number){
+    const user = this.repo.create({email, password,name , date, balance});
 
     return this.repo.save(user);
 }
